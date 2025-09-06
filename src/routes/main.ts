@@ -12,7 +12,9 @@ mainRouter.post('/user', async (req, res) => {
     name: 'John Doe',
     email: 'victor@email.com'
   });
-
-  res.json({ user });
-
-})
+  if(user) {
+    return res.status(201).json({ user });
+  } else {
+    res.status(500).json({ error: "E-mail já cadastrado" });
+  }
+});

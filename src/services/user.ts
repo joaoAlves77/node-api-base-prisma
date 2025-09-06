@@ -21,10 +21,12 @@ export const createUsers = async (users: Prisma.UserCreateInput[]) => {
 }
 
 export const getAllUsers = async () => {
+  let page = 2;
+
+  let perPage = 4;
   const users = await prisma.user.findMany({
-    orderBy: {
-      name: 'desc'
-    }
+    skip: (page - 1) * perPage,
+    take: perPage
   });
   return users;
 }

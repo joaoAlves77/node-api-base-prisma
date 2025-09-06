@@ -9,8 +9,14 @@ mainRouter.get('/ping', (req, res) => {
 
 mainRouter.post('/user', async (req, res) => {
   const user = await createUser({
-    name: 'John Doe',
-    email: 'victor@email.com'
+    name: 'testado 2',
+    email: 'teste2@email.com',
+    Posts: {
+      create: {
+        title: "Titulo de teste",
+        body: "Corpo do post",
+      }
+    }
   });
   if(user) {
     return res.status(201).json({ user });
